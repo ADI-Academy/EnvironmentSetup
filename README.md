@@ -5,7 +5,7 @@ You will need to prepare your system to run python and Flask. If you have previo
 ### Table of Contents
 
 1. [Mac OS Installation](#mac-osx)
-	1. [Package Manager](#package-manager)
+	1. [Package Manager](#1.-package-manager)
 	2. [pip](#pip)
 	3. [virtualenv](#virtualenv)
 	4. [Testing](#testing)
@@ -19,19 +19,22 @@ Your system has a preinstalled version of python that we have limited control ov
 
 We want to maintain our own version of python which we are going to do via the Homebrew package manager for mac-osx.
 
-1. Install homebrew by running the following command:
+1. Install homebrew by running the following command and following the printed instructions:
 ```shell
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
+
 2. Update your brew references:
 ```shell
 brew update
 ```
 3.
-
+### 2. pip
+### 3. virtualenv
 ### 4. Testing
 If you followed all of the previous steps without error, you should be able to run Flask now!
-1. Make sure that your virtualenv is activated (remember: `source bin/activate`)
+1. Make sure that your virtualenv is activated (remember: ` source bin/activate`)
+
 2. Copy and paste the following code into a file (don't worry if you don't understand what's going on - we'll be going into granular detail in the coming weeks!):
 ```python
 from flask import Flask
@@ -44,8 +47,9 @@ def index():
 if __name__ == "__main__":
 	app.run()
 ```
+
 3. Save the file as app.py and run `python app.py`. You should see:
 ```shell
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-```
+ ```
 4. Open a web browser and go to `127.0.0.1:5000` and you should see something like this!
