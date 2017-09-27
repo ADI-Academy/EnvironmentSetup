@@ -15,7 +15,7 @@ You will need to prepare your system to run python and Flask. If you have previo
 	3. [virtualenv and flask](#3-wflask)
 	4. [Testing](#4-testing)
 3. [Editors](#editors)
-	
+
 -----
 ## Mac OSX
 For the majority of the installation, we will be using the terminal. Don't worry if you're unfamiliar with it - we will walk you step by step through the installation.
@@ -24,7 +24,7 @@ Open terminal by simply typing it into the spotlight search.
 **Note:** Whenever you see terminal inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
 
 ### 1. Package Manager
-Your system has a preinstalled version of python that we have limited control over. You can type `python --version` into your terminal window to see your current python version. If you don't see `Python 2.7.13`, follow the rest of this step.
+Your system has a preinstalled version of python that we have limited control over. You can type `python --version` into your terminal window to see your current python version. If you don't see `Python 2.7.14`, follow the rest of this step.
 
 We want to maintain our own version of python which we are going to do via the Homebrew package manager for mac-osx.
 
@@ -63,9 +63,9 @@ pip is the official package manager for python and allows you to install and man
 ### 3. virtualenv and flask
 virtualenv is an extremely useful tool that allows you to isolate your python development environments. Essentially, each virtualenv will contain a new and clean instance of python, pip, and your site packages. This way, if you install or update packages either in the global python scope or in another virtualenv, your changes will not affect this current virtualenv.
 
-1. Make sure that pip in installed and run:
+1. Make sure that pip is installed and run:
 ```shell
-$ sudo pip install virtualenv
+$ pip install virtualenv
 ```
 
 2. We are going to create our first virtualenv in this step. You should create a folder somewhere where you will plan to put all of your code for your web apps. We will refer to this folder as `$ACADEMY` in this section.
@@ -129,17 +129,17 @@ For the majority of the installation, we will be using command prompt (or Git Ba
 **Note:** Whenever you see cmd inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
 
 ### 1. Python
-If you have Python 2.7.13 already installed, you can skip this step. If you don't know if you do, you can type `python --version` into your terminal window to see your current python version. If you don't have Python 2.7.13 installed, follow these steps.
+If you have Python 2.7.14 already installed, you can skip this step. If you don't know if you do, you can type `python --version` into your terminal window to see your current python version. If you don't have Python 2.7.14 installed, follow these steps.
 
 Install the python package from [here](https://www.python.org/downloads/windows/).  
-_At the time of this writing, [Python 2.7.13](https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi) is the latest._  
+_At the time of this writing, [Python 2.7.14](https://www.python.org/downloads/release/python-2714/) is the latest._  
 * Verify a successful installation by opening a command prompt window and navigating to your Python installation directory (default is `C:\Python27`).  Type `python` from this location to launch the Python interpreter.
     ```
     Microsoft Windows [Version 6.2.9200]
     (c) 2012 Microsoft Corporation. All rights reserved.
-    
+
     C:\Users\Username>cd C:\Python27
-    
+
     C:\Python27>python
     Python 2.7.8 (default, Jun 30 2014, 16:03:49) [MSC v.1500 32 bit (Intel)] on win
     32
@@ -160,9 +160,9 @@ _At the time of this writing, [Python 2.7.13](https://www.python.org/ftp/python/
     ```
     Microsoft Windows [Version 6.2.9200]
     (c) 2012 Microsoft Corporation. All rights reserved.
-    
+
     C:\Users\Username>python
-    Python 2.7.8 (default, Jun 30 2014, 16:03:49) [MSC v.1500 32 bit (Intel)] on win
+    Python 2.7.14 (default, Sep 27 2017, 16:03:49) [MSC v.1500 32 bit (Intel)] on win
     32
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
@@ -187,9 +187,9 @@ _`pip freeze` displays the version number of all modules installed in your Pytho
     ```
     Microsoft Windows [Version 6.2.9200]
     (c) 2012 Microsoft Corporation. All rights reserved.
-    
+
     C:\Users\Username>cd c:\Python27\Scripts
-    
+
     c:\Python27\Scripts>pip freeze
     antiorm==1.1.1
     enum34==1.0
@@ -201,7 +201,7 @@ _`pip freeze` displays the version number of all modules installed in your Pytho
     ```
     Microsoft Windows [Version 6.2.9200]
     (c) 2012 Microsoft Corporation. All rights reserved.
-    
+
     C:\Users\Username>pip freeze
     antiorm==1.1.1
     enum34==1.0
