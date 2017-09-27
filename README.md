@@ -122,6 +122,7 @@ if __name__ == "__main__":
 
 ![Hello World Flask](images/flask-hello-world.png)
 
+-------
 
 ## Windows
 For the majority of the installation, we will be using command prompt (or Git Bash if you choose to). To access command prompt, press the start key and type in 'cmd' into the search bar and press enter.
@@ -147,7 +148,7 @@ _At the time of this writing, [Python 2.7.14](https://www.python.org/downloads/r
     >>>
     ```
 * It would be nice to be able to run Python from any location without having to constantly reference the full installation path name.  This can by done by adding the Python installation path to Windows' `PATH` `ENVIRONMENT VARIABLE`  
-*_In Windows 7 and Windows 8, simply searching for "environment variables" will present the option to `Edit the system environment variables`. This will open the `System Properties / Advanced` tab_  
+*_In Windows 7, 8 and 10, simply searching for "environment variables" will present the option to `Edit the system environment variables`. This will open the `System Properties / Advanced` tab_*
 *_In Windows XP, right click on `My Computer->Properties` to open `System Properties` and click on the `Advanced` tab._*
  1. On the `System Properties / Advanced` tab, click `Environment Variables` to open `User Variables` and `System Variables`
  2. Create a new `System Variable` named Variable name: `PYTHON_HOME` and  Variable value: `c:\Python27` (or whatever your installation path was)  
