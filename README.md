@@ -120,7 +120,6 @@ if __name__ == "__main__":
  ```
 4. Open a web browser and go to `localhost:5000` and you should see something like this!
 
-
 ![Hello World Flask](images/flask-hello-world.png)
 
 
