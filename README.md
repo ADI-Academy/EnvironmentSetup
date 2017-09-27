@@ -10,10 +10,10 @@ You will need to prepare your system to run python and Flask. If you have previo
 	3. [virtualenv and flask](#3-virtualenv-and-flask)
 	4. [Testing](#4-testing)
 2. [Windows Installation](#windows)
-	1. [Python](#1-python)
-	2. [pip](#2-wpip)
-	3. [virtualenv and flask](#3-wflask)
-	4. [Testing](#4-testing)
+	1. [Python](#1-python-for-windows)
+	2. [pip](#2-pip-for-windows)
+	3. [virtualenv and flask](#3-virtualenv-and-flask-for-windows)
+	4. [Testing](#4-testing-for-windows)
 3. [Editors](#editors)
 
 -----
@@ -128,10 +128,10 @@ For the majority of the installation, we will be using command prompt (or Git Ba
 
 **Note:** Whenever you see cmd inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
 
-### 1. Python
+### 1. Python for Windows
 If you have Python 2.7.14 already installed, you can skip this step. If you don't know if you do, you can type `python --version` into your terminal window to see your current python version. If you don't have Python 2.7.14 installed, follow these steps.
 
-Install the python package from [here](https://www.python.org/downloads/windows/).  
+Install the python package from [here](https://www.python.org/downloads/windows/). We will be using python 2.7.x in this course where x is just the latest version of python.
 _At the time of this writing, [Python 2.7.14](https://www.python.org/downloads/release/python-2714/) is the latest._  
 * Verify a successful installation by opening a command prompt window and navigating to your Python installation directory (default is `C:\Python27`).  Type `python` from this location to launch the Python interpreter.
     ```
@@ -148,7 +148,7 @@ _At the time of this writing, [Python 2.7.14](https://www.python.org/downloads/r
     ```
 * It would be nice to be able to run Python from any location without having to constantly reference the full installation path name.  This can by done by adding the Python installation path to Windows' `PATH` `ENVIRONMENT VARIABLE`  
 *_In Windows 7 and Windows 8, simply searching for "environment variables" will present the option to `Edit the system environment variables`. This will open the `System Properties / Advanced` tab_  
-*_In Windows XP, right click on `My Computer->Properties` to open `System Properties` and click on the `Advanced` tab._  
+*_In Windows XP, right click on `My Computer->Properties` to open `System Properties` and click on the `Advanced` tab._*
  1. On the `System Properties / Advanced` tab, click `Environment Variables` to open `User Variables` and `System Variables`
  2. Create a new `System Variable` named Variable name: `PYTHON_HOME` and  Variable value: `c:\Python27` (or whatever your installation path was)  
 ![](https://camo.githubusercontent.com/767e3e7294af750e7db47ffb119cdc1154e2c79f/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f323939363230352f313035383236332f38643062376334632d313138352d313165332d383532622d3863653063303263623464322e706e67)
@@ -168,17 +168,7 @@ _At the time of this writing, [Python 2.7.14](https://www.python.org/downloads/r
     >>>
     ```
 
-4. If you run `python --version` now you should get the exact same output as before. It seems like we haven't done anything at all! The issue is because the newest version of homebrew installs python as `python2` on your system to distinguish it from the built in version. However, it can be annoying to type `python2` every time that we want to use python so we want to point our computer in the right direction to find the right python installation.
-```shell
-$ cd ~ # This will go to your root directory
-$ echo "export PATH='/usr/local/opt/python/libexec/bin:$PATH'" >> .bashrc
-$ source .bashrc
-$ python --version
-Python 2.7.14
-```
-If you got to this step then your python has been installed correctly!
-
-### 2. pip [#2-wpip]
+### 2. pip for Windows
 pip is the official package manager for python and allows you to install and manage third-party extensions to python. As we use python more and more, this tool becomes invaluable and you should spend some time playing around with it to see how it works.
 
 * Download [get-pip.py](https://bootstrap.pypa.io/get-pip.py) to a folder on your computer. Open a command prompt window and navigate to the folder containing `get-pip.py`. Then run `python get-pip.py`. This will install `pip`.
@@ -207,69 +197,14 @@ _`pip freeze` displays the version number of all modules installed in your Pytho
     enum34==1.0
     requests==2.3.0
     virtualenv==1.11.6
+		...
     ```
 
-### 3. virtualenv and flask [#3-wflask]
-virtualenv is an extremely useful tool that allows you to isolate your python development environments. Essentially, each virtualenv will contain a new and clean instance of python, pip, and your site packages. This way, if you install or update packages either in the global python scope or in another virtualenv, your changes will not affect this current virtualenv.
+### 3. virtualenv and flask for Windows
+Follow the same [instructions for Mac](#3-virtualenv-and-flask) for this section.
 
-1. Make sure that pip in installed and run:
-'''shell
-$ pip install virtualenv
-'''
-
-2. We are going to create our first virtualenv in this step. You should create a folder somewhere where you will plan to put all of your code for your web apps. We will refer to this folder as `$ACADEMY` in this section.
-
-3. Turn your `$ACADEMY` folder into a virutalenv by using the command.
-```shell
-$ virtualenv "\path\to\$ACADEMY
-```
-**NOTE:** Keep in mind that you have to provide either the relative or the absolute path to `$ACADEMY`.
-
-4. To use your virtualenv, simply go into `$ACADEMY` (using `dir`, short for directory) and activate the virtualenv.
-```shell
-$ cd \path\to\$ACADEMY
-$ source .\bin\activate
-```
-You should see something like this after activating:
-```shell
-($ACADEMY) $
-```
-This indicates that you're in the `$ACADEMY` virtualenv.
-
-5. We will install our first package in our new virutalenv.
-```shell
-($ACADEMY) $ pip install flask
-```
-The [flask library](http://flask.pocoo.org/docs/0.12/) contains the majority of the important functionality that we will use this semester.
-
-6. To exit out of a virtualenv, simply enter `deactivate` in the terminal.
-
-
-### 4. Testing [#4-wtesting]
-If you followed all of the previous steps without error, you should be able to run Flask now!
-1. Make sure that your virtualenv is activated (remember: `$ source bin/activate`)
-
-2. Copy and paste the following code into a file (don't worry if you don't understand what's going on - we'll be going into granular detail in the coming weeks!):
-```python
-from flask import Flask
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return "Hello World!"
-
-if __name__ == "__main__":
-	app.run()
-```
-
-3. Save the file as app.py and run `python app.py`. You should see:
-```shell
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- ```
-4. Open a web browser and go to `localhost:5000` and you should see something like this!
-
-![Hello World Flask](images/flask-hello-world.png)
-
+### 4. Testing for windows
+Follow the same [instructions for Mac](#4-testing) for this section.
 
 ## Editors
 Having a good text editor is essential to programming. However, the choice of editors between programmers can be a source of the most vehement passive-aggressiveness (which is what passes as conflict between coders). That being said, we have included a few options if you don't have a favorite yet.
