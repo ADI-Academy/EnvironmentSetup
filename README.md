@@ -9,10 +9,13 @@ You will need to prepare your system to run python and Flask. If you have previo
 	2. [pip](#2-pip)
 	3. [virtualenv and flask](#3-virtualenv-and-flask)
 	4. [Testing](#4-testing)
-	5. [Editor](#5-editors)
-2. [Windows](#windows)
+2. [Windows Installation](#windows)
 	1. [Python](#1-python)
-	2. [pip](#2-pip)
+	2. [pip](#2-wpip)
+	3. [virtualenv and flask](#3-wflask)
+	4. [Testing](#4-testing)
+3. [Editors](#editors)
+	
 -----
 ## Mac OSX
 For the majority of the installation, we will be using the terminal. Don't worry if you're unfamiliar with it - we will walk you step by step through the installation.
@@ -121,26 +124,6 @@ if __name__ == "__main__":
 ![Hello World Flask](images/flask-hello-world.png)
 
 
-### 5. Editors
-Having a good text editor is essential to programming. However, the choice of editors between programmers can be a source of the most vehement passive-aggressiveness (which is what passes as conflict between coders). That being said, we have included a few options if you don't have a favorite yet.
-##### [Sublime Text](https://www.sublimetext.com/)
-**Used by:** Nick, Jonathan
-
-An extremely popular, minimalistic editor that also has one of the biggest community of contributors who have created almost every possibly extension thought possible. Pick this one either if you don't want to choose or are just looking for a solid setup.
-
-##### [Atom](https://atom.io/)
-Another popular, minimalistic editor that was created by the guys at Github. Atom is very similar to Sublime Text with a comparable library of stable plugins and extensions to the language. Some people believe that Sublime Text is faster however while Atom boasts a cleaner interface. Choose this if you want to stir up fights with your basic teammates who all are using Sublime Text.
-
-##### [Visual Code](https://code.visualstudio.com/)
-An up and coming editor made by Microsoft and the people behind the madly popular Visual Studios suite (very different from Visual Code). There has been a sizable exodus from both the Sublime Text and Atom camp to this editor in the past few years. Check this one out if you want something a bit different or if Sublime Text and Atom are too dry for you. Also, if you choose this one, please let us know your thoughts.
-
-##### [Pycharm](https://www.jetbrains.com/pycharm/)
-**Used by:** Jonathan
-
-This is hands-down the best editor for most things in python and especially flask. There is an overwhelming suite of different functionality that make your life as programmer worth living. As a student, you can even get the premium (read: expensive) version for free. However, this editor is not recommended for beginners as it is has a rather steep learning curve and will consume significantly more memory and resources on your computer than the others on this chart.
-
-**NOTE:** While this may generate some consternation, *DO NOT USE VIM OR EMACS* or any other console based editor that some pseudo-programmer somewhere has told you will make you look 1337 or some other bullshit. You will regret every keystroke and your teammates will laugh at you. :(
-
 ## Windows
 For the majority of the installation, we will be using command prompt (or Git Bash if you choose to). To access command prompt, press the start key and type in 'cmd' into the search bar and press enter.
 
@@ -196,7 +179,7 @@ Python 2.7.14
 ```
 If you got to this step then your python has been installed correctly!
 
-### 2. pip
+### 2. pip [#2-wpip]
 pip is the official package manager for python and allows you to install and manage third-party extensions to python. As we use python more and more, this tool becomes invaluable and you should spend some time playing around with it to see how it works.
 
 * Download [get-pip.py](https://bootstrap.pypa.io/get-pip.py) to a folder on your computer. Open a command prompt window and navigate to the folder containing `get-pip.py`. Then run `python get-pip.py`. This will install `pip`.
@@ -227,7 +210,7 @@ _`pip freeze` displays the version number of all modules installed in your Pytho
     virtualenv==1.11.6
     ```
 
-### 3. virtualenv and flask
+### 3. virtualenv and flask [#3-wflask]
 virtualenv is an extremely useful tool that allows you to isolate your python development environments. Essentially, each virtualenv will contain a new and clean instance of python, pip, and your site packages. This way, if you install or update packages either in the global python scope or in another virtualenv, your changes will not affect this current virtualenv.
 
 1. Make sure that pip in installed and run:
@@ -263,7 +246,7 @@ The [flask library](http://flask.pocoo.org/docs/0.12/) contains the majority of 
 6. To exit out of a virtualenv, simply enter `deactivate` in the terminal.
 
 
-### 4. Testing
+### 4. Testing [#4-wtesting]
 If you followed all of the previous steps without error, you should be able to run Flask now!
 1. Make sure that your virtualenv is activated (remember: `$ source bin/activate`)
 
@@ -286,8 +269,10 @@ if __name__ == "__main__":
  ```
 4. Open a web browser and go to `localhost:5000` and you should see something like this!
 
+![Hello World Flask](images/flask-hello-world.png)
 
-### 5. Editors
+
+## Editors
 Having a good text editor is essential to programming. However, the choice of editors between programmers can be a source of the most vehement passive-aggressiveness (which is what passes as conflict between coders). That being said, we have included a few options if you don't have a favorite yet.
 ##### [Sublime Text](https://www.sublimetext.com/)
 **Used by:** Nick, Jonathan
