@@ -114,7 +114,9 @@ if __name__ == "__main__":
  ```
 4. Open a web browser and go to `localhost:5000` and you should see something like this!
 
-![Hello World Flask][images/flask-hello-world.png]
+
+![Hello World Flask](images/flask-hello-world.png)
+
 
 ### 5. Editors
 Having a good text editor is essential to programming. However, the choice of editors between programmers can be a source of the most vehement passive-aggressiveness (which is what passes as conflict between coders). That being said, we have included a few options if you don't have a favorite yet.
