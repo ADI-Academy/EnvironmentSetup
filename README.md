@@ -5,7 +5,7 @@ You will need to prepare your system to run python and Flask. If you have previo
 ### Table of Contents
 
 1. [Mac OS Installation](#mac-osx)
-	1. [Package Manager](#package-manager)
+	1. [Package Manager](#1.-package-manager)
 	2. [pip](#pip)
 	3. [virtualenv](#virtualenv)
 	4. [Testing](#testing)
