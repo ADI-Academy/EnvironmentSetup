@@ -10,6 +10,9 @@ You will need to prepare your system to run python and Flask. If you have previo
 	3. [virtualenv and flask](#3-virtualenv-and-flask)
 	4. [Testing](#4-testing)
 	5. [Editor](#5-editors)
+2. [Windows](#windows)
+	1. [Python](#1-python)
+	2. [pip](#2-pip)
 -----
 ## Mac OSX
 For the majority of the installation, we will be using the terminal. Don't worry if you're unfamiliar with it - we will walk you step by step through the installation.
@@ -50,17 +53,17 @@ If you got to this step then your python has been installed correctly!
 ### 2. pip
 pip is the official package manager for python and allows you to install and manage third-party extensions to python. As we use python more and more, this tool becomes invaluable and you should spend some time playing around with it to see how it works.
 
-1. If you followed step 1 to install python with homebrew, then pip is installed and configured properly as well. Run `$ pip` to make sure that you get the help panel.
+1. If you followed [step 1](#1-package-manager) to install python with homebrew, then pip is installed and configured properly as well. Run `$ pip` to make sure that you get the help panel.
 
-2. If for some reason you decided not to follow [step 1](#package-manager) and you don't have pip installed please contact a TA.
+2. If for some reason you decided not to follow [step 1](#1-package-manager) and you don't have pip installed please contact a TA.
 
 ### 3. virtualenv and flask
 virtualenv is an extremely useful tool that allows you to isolate your python development environments. Essentially, each virtualenv will contain a new and clean instance of python, pip, and your site packages. This way, if you install or update packages either in the global python scope or in another virtualenv, your changes will not affect this current virtualenv.
 
 1. Make sure that pip in installed and run:
-'''shell
+```shell
 $ sudo pip install virtualenv
-'''
+```
 
 2. We are going to create our first virtualenv in this step. You should create a folder somewhere where you will plan to put all of your code for your web apps. We will refer to this folder as `$ACADEMY` in this section.
 
@@ -70,7 +73,7 @@ $ virtualenv /path/to/$ACADEMY
 ```
 **NOTE:** Keep in mind that you have to provide either the relative or the absolute path to `$ACADEMY`.
 
-4. To use your virtualenv, simply go into `$ACADEMY` (using `cd`, short for change directory) and activate the virtualenv.
+4. To use your virtualenv, simply go into `$ACADEMY` (using `cd`, short for 'change directory') and activate the virtualenv.
 ```shell
 $ cd /path/to/$ACADEMY
 $ source ./bin/activate
@@ -107,11 +110,15 @@ if __name__ == "__main__":
 	app.run()
 ```
 
-3. Save the file as app.py and run `python app.py`. You should see:
+3. Save the file as `app.py` in `$ACACDEMY` and run `python app.py`. You should see:
 ```shell
+($ACADEMY) $ python app.py
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
  ```
 4. Open a web browser and go to `localhost:5000` and you should see something like this!
+
+
+![Hello World Flask](images/flask-hello-world.png)
 
 
 ### 5. Editors
