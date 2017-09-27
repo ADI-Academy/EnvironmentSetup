@@ -6,17 +6,17 @@ You will need to prepare your system to run python and Flask. If you have previo
 
 1. [Mac OS Installation](#mac-osx)
 	1. [Package Manager](#1-package-manager)
-	2. [pip](#1-pip)
+	2. [pip](#2-pip)
 	3. [virtualenv and flask](#3-virtualenv-and-flask)
 	4. [Testing](#4-testing)
-	5. [Editor](#5-editor)
+	5. [Editor](#5-editors)
 -----
 ## Mac OSX
 For the majority of the installation, we will be using the terminal. Don't worry if you're unfamiliar with it - we will walk you step by step through the installation.
 Open terminal by simply typing it into the spotlight search.
 
 **Note:** Whenever you see terminal inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
-µµµµ
+
 ### 1. Package Manager
 Your system has a preinstalled version of python that we have limited control over. You can type `python --version` into your terminal window to see your current python version. If you don't see `Python 2.7.13`, follow the rest of this step.
 
