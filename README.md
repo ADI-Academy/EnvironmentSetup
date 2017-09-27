@@ -201,7 +201,39 @@ _`pip freeze` displays the version number of all modules installed in your Pytho
     ```
 
 ### 3. virtualenv and flask for Windows
-Follow the same [instructions for Mac](#3-virtualenv-and-flask) for this section.
+virtualenv is an extremely useful tool that allows you to isolate your python development environments. Essentially, each virtualenv will contain a new and clean instance of python, pip, and your site packages. This way, if you install or update packages either in the global python scope or in another virtualenv, your changes will not affect this current virtualenv.
+
+1. Make sure that pip in installed and run:
+```shell
+$ pip install virtualenv
+```
+
+2. We are going to create our first virtualenv in this step. You should create a folder somewhere where you will plan to put all of your code for your web apps. We will refer to this folder as `$ACADEMY` in this section.
+
+3. Turn your `$ACADEMY` folder into a virutalenv by using the command.
+```shell
+$ virtualenv \path\to\$ACADEMY
+```
+**NOTE:** Keep in mind that you have to provide either the relative or the absolute path to `$ACADEMY`.
+
+4. To use your virtualenv, simply go into `$ACADEMY` (using `cd`, short for 'change directory') and activate the virtualenv.
+```shell
+$ cd /path/to/$ACADEMY
+$ ./Scripts/activate
+```
+You should see something like this after activating:
+```shell
+($ACADEMY) $
+```
+This indicates that you're in the `$ACADEMY` virtualenv.
+
+5. We will install our first package in our new virutalenv.
+```shell
+($ACADEMY) $ pip install flask
+```
+The [flask library](http://flask.pocoo.org/docs/0.12/) contains the majority of the important functionality that we will use this semester.
+
+6. To exit out of a virtualenv, simply enter `deactivate` in the terminal.
 
 ### 4. Testing for windows
 Follow the same [instructions for Mac](#4-testing) for this section.
