@@ -68,13 +68,17 @@ virtualenv is an extremely useful tool that allows you to isolate your python de
 $ pip install virtualenv
 ```
 
-2. We are going to create our first virtualenv in this step. You should create a folder somewhere where you will plan to put all of your code for your web apps. We will refer to this folder as `$ACADEMY` in this section.
+2. We are going to create our first virtualenv in this step. You should create a folder somewhere where you will plan to put all of your code for your web apps. We will refer to this folder as `$ACADEMY` in this section
+**NOTE:** The name of your folder is NOT `$ACADEMY` - you should name it something easy to remember and descriptive of your project. Whenever you see `$ACADEMY`, remember to replace it with the name of your real folder.
 
-3. Turn your `$ACADEMY` folder into a virutalenv by using the command.
-```shell
-$ virtualenv /path/to/$ACADEMY
-```
-**NOTE:** Keep in mind that you have to provide either the relative or the absolute path to `$ACADEMY`.
+3. Turn your `$ACADEMY` folder into a virutalenv by using this command.   
+   * **IMPORTANT:** Do not copy and paste `/path/to/$ACADEMY` directly into your terminal. This should point to the actual location of your `$ACADEMY` folder.
+      * *Example:* If you named your folder `myAcademyProjects` and saved it to your Desktop, you would use `~/Desktop/myAcademyProjects` whenever you refer to the folder. The `~` sign is simply an alias that points to your home directory.
+
+	```shell
+	$ virtualenv /path/to/$ACADEMY # DO NOT COPY AND PASTE THIS
+	```
+**NOTE:** You have to provide either the relative or the absolute path to `$ACADEMY`.
 
 4. To use your virtualenv, simply go into `$ACADEMY` (using `cd`, short for 'change directory') and activate the virtualenv.
 ```shell
@@ -85,7 +89,7 @@ You should see something like this after activating:
 ```shell
 ($ACADEMY) $
 ```
-This indicates that you're in the `$ACADEMY` virtualenv.
+This indicates that you're in the `$ACADEMY` virtualenv. Make sure the name of your folder is in parenthesis in front of your command to indicate that the virtualenv is activated.
 
 5. We will install our first package in our new virutalenv.
 ```shell
@@ -100,7 +104,7 @@ The [flask library](http://flask.pocoo.org/docs/0.12/) contains the majority of 
 If you followed all of the previous steps without error, you should be able to run Flask now!
 1. Make sure that your virtualenv is activated (remember: `$ source bin/activate`)
 
-2. Copy and paste the following code into a file (don't worry if you don't understand what's going on - we'll be going into granular detail in the coming weeks!):
+2. Copy and paste the following code into a file and save it . If you don't know how to do this, download [an editor](#editors), copy the code into a file and save it in the virtualenv. (don't worry if you don't understand what's going on in the code - we'll be going into granular detail in the coming weeks!):
 ```python
 from flask import Flask
 app = Flask(__name__)
