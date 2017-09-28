@@ -1,6 +1,6 @@
 # EnvironmentSetup
 
-You will need to prepare your system to run python and Flask. If you have previously used Flask, skip to the [testing](#testing) section to verify that your installation works. As you go through the tutorial, feel free to skip certain steps in the tutorial if you have already completed the instructions earlier.
+You will need to prepare your system to run python and Flask. If you have previously used Flask, skip to the [testing](#testing) section to verify that your installation works. As you go through the tutorial, feel free to skip certain steps if you have already completed the instructions prior.
 
 ### Table of Contents
 
@@ -18,10 +18,9 @@ You will need to prepare your system to run python and Flask. If you have previo
 
 -----
 ## Mac OSX
-For the majority of the installation, we will be using the terminal. Don't worry if you're unfamiliar with it - we will walk you step by step through the installation.
-Open terminal by simply typing it into the spotlight search.
+For the majority of the installation, we will be using the terminal which you can open by simply typing "terminal" into your spotlight search bar.
 
-**Note:** Whenever you see terminal inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
+**Note:** In this tutorial, whenever you see terminal inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
 
 ### 1. Package Manager
 Your system has a preinstalled version of python that we have limited control over. You can type `python --version` into your terminal window to see your current python version. If you don't see `Python 2.7.14`, follow the rest of this step.
