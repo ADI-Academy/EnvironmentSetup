@@ -45,7 +45,7 @@ $ brew install python
 4. If you run `python --version` now you should get the exact same output as before. It seems like we haven't done anything at all! The issue is because the newest version of homebrew installs python as `python2` on your system to distinguish it from the built in version. However, it can be annoying to type `python2` every time that we want to use python so we want to point our computer in the right direction to find the right python installation.
 ```shell
 $ cd ~ # This will go to your root directory
-$ echo "export PATH='/usr/local/opt/python/libexec/bin:$PATH'" >> .bash_profile
+$ echo 'export PATH="/usr/local/opt/python/libexec/bin:$PATH"' >> .bash_profile
 $ source .bash_profile
 $ python --version
 Python 2.7.14
