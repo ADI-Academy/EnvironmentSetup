@@ -182,8 +182,8 @@ $ virtualenv \path\to\$ACADEMY
 
 4. To use your virtualenv, simply go into `$ACADEMY` (using `cd`, short for 'change directory') and activate the virtualenv.
 ```shell
-$ cd /path/to/$ACADEMY
-$ ./Scripts/activate
+$ cd \path\to\$ACADEMY
+$ .\Scripts\activate
 ```
 You should see something like this after activating:
 ```shell
