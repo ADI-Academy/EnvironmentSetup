@@ -70,15 +70,15 @@ Academys-Macbook-Pro:~/Desktop academy$
 b. `ls`: `ls` lists the contents of the current directory. This allows you to see which directories you can navigate to.
 ```shell
 Academys-Macbook-Pro:~ academy$ ls
-Desktop					Downloads				Movies				Pictures
-Documents				Library 				Music					Public
+Desktop        Downloads      Movies        Pictures
+Documents      Library        Music         Public
 ```
 c. `mkdir`: `mkdir` is short for "make directory" and makes a directory with the name you supply.
 ```shell
 Academys-Macbook-Pro:~ academy$ mkdir Academy
 Academys-Macbook-Pro:~ academy$ ls
-Academy 				Documents				Library 			Music 					Public
-Desktop				  Downloads 			Music					Pictures
+Academy        Documents      Library       Music          Public
+Desktop        Downloads      Music         Pictures
 ```
 
 All of these commands are just simpler (and often quicker) ways of interacting with your computer if you were using the Finder and clicking through folders.
