@@ -23,7 +23,7 @@ For the majority of the installation, we will be using the terminal which you ca
 **Note:** In this tutorial, whenever you see terminal inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
 
 ### 1. Package Manager
-Your system has a preinstalled version of python that we have limited control over. You can type `python --version` into your terminal window to see your current python version. If you don't see `Python 2.7.14`, follow the rest of this step.
+Your system has a preinstalled version of python that we have limited control over. You can type `python --version` into your terminal window to see your current python version. If you don't see `Python 3.6.4`, follow the rest of this step.
 
 We want to maintain our own version of python which we are going to do via the Homebrew package manager for mac-osx.
 
@@ -48,7 +48,7 @@ $ cd ~ # This will go to your root directory
 $ echo 'export PATH="/usr/local/opt/python/libexec/bin:$PATH"' >> .bash_profile
 $ source .bash_profile
 $ python --version
-Python 2.7.14
+Python 3.6.4
 ```
 If you got to this step then your python has been installed correctly!
 
@@ -133,74 +133,34 @@ For the majority of the installation, we will be using command prompt (or Git Ba
 **Note:** Whenever you see cmd inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
 
 ### 1. Python for Windows
-If you have Python 2.7.14 already installed, you can skip this step. If you don't know if you do, you can type `python --version` into your terminal window to see your current python version. If you don't have Python 2.7.14 installed, follow these steps.
+If you have Python 3.6.4 already installed, you can skip this step. If you don't know if you do, you can type `python --version` into your terminal window to see your current python version. If you don't have Python 3.6.4 installed, follow these steps.
 
-Install the python package from [here](https://www.python.org/downloads/windows/). We will be using python 2.7.x in this course where x is just the latest version of python.
-_At the time of this writing, [Python 2.7.14](https://www.python.org/downloads/release/python-2714/) is the latest._  
-* Verify a successful installation by opening a command prompt window and navigating to your Python installation directory (default is `C:\Python27`).  Type `python` from this location to launch the Python interpreter.
+Install the python package from [here](https://www.python.org/downloads/windows/). We will be using python 3.6.x in this course where x is just the latest version of python.
+_At the time of this writing, [Python 3.6.4](https://www.python.org/downloads/release/python-364/) is the latest._  
+
+Download the executable installer and click on ENABLE PATH VARIABLE. Make sure this is checked!
+
+* Verify a successful installation by opening a command prompt window typing the following commands.
     ```
     Microsoft Windows [Version 6.2.9200]
     (c) 2012 Microsoft Corporation. All rights reserved.
 
-    C:\Users\Username>cd C:\Python27
-
-    C:\Python27>python
-    Python 2.7.8 (default, Jun 30 2014, 16:03:49) [MSC v.1500 32 bit (Intel)] on win
-    32
-    Type "help", "copyright", "credits" or "license" for more information.
-    >>>
-    ```
-* It would be nice to be able to run Python from any location without having to constantly reference the full installation path name.  This can by done by adding the Python installation path to Windows' `PATH` `ENVIRONMENT VARIABLE`  
-*_In Windows 7, 8 and 10, simply searching for "environment variables" will present the option to `Edit the system environment variables`. This will open the `System Properties / Advanced` tab_*
-*_In Windows XP, right click on `My Computer->Properties` to open `System Properties` and click on the `Advanced` tab._*
- 1. On the `System Properties / Advanced` tab, click `Environment Variables` to open `User Variables` and `System Variables`
- 2. Create a new `System Variable` named Variable name: `PYTHON_HOME` and  Variable value: `c:\Python27` (or whatever your installation path was)  
-![](https://camo.githubusercontent.com/767e3e7294af750e7db47ffb119cdc1154e2c79f/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f323939363230352f313035383236332f38643062376334632d313138352d313165332d383532622d3863653063303263623464322e706e67)
- 3. Find the system variable called `Path` and click `Edit`  
-![](https://camo.githubusercontent.com/da06b60252e8293d278d2027544d23602daa853b/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f323939363230352f313035383239342f30643734343936382d313138362d313165332d383766302d6531326166323330353030612e706e67)
- 4. Add the following text to the end of the Variable value:  `;%PYTHON_HOME%\;%PYTHON_HOME%\Scripts\`
-![](https://camo.githubusercontent.com/fb28d689631f2f4012741f6cf599dd52ed720b92/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f323939363230352f313035383237362f63333566353334612d313138352d313165332d386631622d6439343033633836643939662e706e67)
- 5. Verify a successful environment variable update by opening a new command prompt window (important!) and typing `python` from any location
-    ```
-    Microsoft Windows [Version 6.2.9200]
-    (c) 2012 Microsoft Corporation. All rights reserved.
-
-    C:\Users\Username>python
-    Python 2.7.14 (default, Sep 27 2017, 16:03:49) [MSC v.1500 32 bit (Intel)] on win
-    32
-    Type "help", "copyright", "credits" or "license" for more information.
-    >>>
+    C:\Users\Username>python --version
+    Python 3.6.4 
     ```
 
 ### 2. pip for Windows
 pip is the official package manager for python and allows you to install and manage third-party extensions to python. As we use python more and more, this tool becomes invaluable and you should spend some time playing around with it to see how it works.
 
 * Download [get-pip.py](https://bootstrap.pypa.io/get-pip.py) to a folder on your computer. Open a command prompt window and navigate to the folder containing `get-pip.py`. Then run `python get-pip.py`. This will install `pip`.
-* Verify a successful installation by opening a command prompt window and navigating to your Python installation's script directory (default is `C:\Python27\Scripts`).  Type `pip freeze` from this location to launch the Python interpreter.  
-_`pip freeze` displays the version number of all modules installed in your Python non-standard library;  On a fresh install, `pip freeze` probably won't have much info to show but we're more interested in any errors that might pop up here than the actual content_
+* Verify a successful installation by opening a command prompt window and typing the following:
+
     ```
     Microsoft Windows [Version 6.2.9200]
     (c) 2012 Microsoft Corporation. All rights reserved.
 
-    C:\Users\Username>cd c:\Python27\Scripts
-
-    c:\Python27\Scripts>pip freeze
-    antiorm==1.1.1
-    enum34==1.0
-    requests==2.3.0
-    virtualenv==1.11.6
-    ```
-* It would be nice to be able to run Pip from any location without having to constantly reference the full installation path name.  If you followed the Python installation instructions above, then you've already got the pip install location (default = `C:\Python27\Scripts`) in your Windows' `PATH` `ENVIRONMENT VARIABLE`.  If you did not follow those steps, refer to them above now.
-* Verify a successful environment variable update by opening a new command prompt window (important!) and typing `pip freeze` from any location
-    ```
-    Microsoft Windows [Version 6.2.9200]
-    (c) 2012 Microsoft Corporation. All rights reserved.
-
-    C:\Users\Username>pip freeze
-    antiorm==1.1.1
-    enum34==1.0
-    requests==2.3.0
-    virtualenv==1.11.6
+    C:\Users\Username>pip --version
+    pip 9.0.1
 		...
     ```
 
