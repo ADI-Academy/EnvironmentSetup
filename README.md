@@ -18,16 +18,16 @@ You will need to prepare your system to run python and Flask. If you have previo
 
 -----
 ## Mac OSX
-For the majority of the installation, we will be using the terminal which you can open by simply typing "terminal" into your spotlight search bar.
+For the majority of the installation, we will be using the Command Line (known as "terminal" on mac) which allows us to access a text-based interface to the computer. You can open the program by simply searching for "terminal" into your spotlight bar.
 
 **Note:** In this tutorial, whenever you see terminal inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
 
 ### 1. Package Manager
-Your system has a preinstalled version of python that we have limited control over. You can type `python --version` into your terminal window to see your current python version. If you don't see `Python 3.6.4`, follow the rest of this step.
+Your system has a preinstalled version of python that we have limited control over. You can type `python --version` into your terminal window to see your current python version. However, we want to be using python 3 since python 2 is quickly reaching the end of its lifetime.
 
-We want to maintain our own version of python which we are going to do via the Homebrew package manager for mac-osx.
+In order to download and maintain our own version of python, we are going to use the Homebrew package manager for Mac-OSX.
 
-1. Install homebrew by running the following command and following the printed instructions:
+1. Install homebrew by running the following command and following the printed instructions. This step should takea  few minutes to complete.
 ```shell
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
@@ -37,73 +37,111 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 $ brew update
 ```
 
-3. Install python
+3. Install python 3
 ```shell
-$ brew install python
+$ brew install python3
 ```
 
-4. If you run `python --version` now you should get the exact same output as before. It seems like we haven't done anything at all! The issue is because the newest version of homebrew installs python as `python2` on your system to distinguish it from the built in version. However, it can be annoying to type `python2` every time that we want to use python so we want to point our computer in the right direction to find the right python installation.
+4. Test to see if your output matches the below lines!
 ```shell
-$ cd ~ # This will go to your root directory
-$ echo 'export PATH="/usr/local/opt/python/libexec/bin:$PATH"' >> .bash_profile
-$ source .bash_profile
-$ python --version
+$ python3 --version
 Python 3.6.4
+$ which python3
+/usr/local/bin/python3
 ```
 If you got to this step then your python has been installed correctly!
 
-### 2. pip
-pip is the official package manager for python and allows you to install and manage third-party extensions to python. As we use python more and more, this tool becomes invaluable and you should spend some time playing around with it to see how it works.
+### 2. The Virtual Environment
+**READ THIS: ITS IMPORTANT**
+Most of professional python coding is done in a **Virtual Environment**, or virtualenv for short, a tool to create an isolated **python environment**. When programmer's refer to the "python environment", they are talking about the collection of software and files that give developers tools to use the language. The software component includes the python binary (what the system calls when you type `python3`) and some other useful tools that we will cover later including `pip` and `wheel`. The second main component is the collection of **libraries** that a developer has downloaded. It is often said that python has a library for everything and it is indeed this feature of python that gives the language so much power and versatility.
 
-1. If you followed [step 1](#1-package-manager) to install python with homebrew, then pip is installed and configured properly as well. Run `$ pip` to make sure that you get the help panel.
+The main use of the virtualenv is to simulate an **isolated python environment** complete with its own set of binaries (`python`, `pip`, etc.) and a clean set of libraries. This allows you to separate different projects with different requirements and prevent your application from being polluted by differences in library versions, cross-platform differences, etc. Beginners to python often find the process of setting up and using a virtualenv rather tedious but the benefits of good practice with python cannot be overstated.
 
-2. If for some reason you decided not to follow [step 1](#1-package-manager) and you don't have pip installed please contact a TA.
+*Advanced (optional):* More specifically, the virtualenv simply contains a copy of the python binaries and a separate, initially empty, folder for the python libraries. When you activate your environment (see below), a script prepends the virtualenv python to your path and changes some system python variables to allow you to use the isolated python libraries.
 
-### 3. virtualenv and flask
-virtualenv is an extremely useful tool that allows you to isolate your python development environments. Essentially, each virtualenv will contain a new and clean instance of python, pip, and your site packages. This way, if you install or update packages either in the global python scope or in another virtualenv, your changes will not affect this current virtualenv.
+#### Setting up your virtualenv  
+**NOTE:** If you are not familiar with the Command Line, there are just a few commands that you need to be familiar with:
 
-1. Make sure that pip is installed and run:
+a. `cd`: `cd` stands for "change directory". It allows you to navigate to a different folder (or directory) in your computer.
 ```shell
-$ pip install virtualenv
+Academys-Macbook-Pro:~ academy$ cd Desktop
+Academys-Macbook-Pro:~/Desktop academy$
+```
+b. `ls`: `ls` lists the contents of the current directory. This allows you to see which directories you can navigate to.
+```shell
+Academys-Macbook-Pro:~ academy$ ls
+Desktop					Downloads				Movies				Pictures
+Documents				Library 				Music					Public
+```
+c. `mkdir`: `mkdir` is short for "make directory" and makes a directory with the name you supply.
+```shell
+Academys-Macbook-Pro:~ academy$ mkdir Academy
+Academys-Macbook-Pro:~ academy$ ls
+Academy 				Documents				Library 			Music 					Public
+Desktop				  Downloads 			Music					Pictures
 ```
 
-2. We are going to create our first virtualenv in this step. You should create a folder somewhere where you will plan to put all of your code for your web apps. We will refer to this folder as `$ACADEMY` in this section
-**NOTE:** The name of your folder is NOT `$ACADEMY` - you should name it something easy to remember and descriptive of your project. Whenever you see `$ACADEMY`, remember to replace it with the name of your real folder.
+All of these commands are just simpler (and often quicker) ways of interacting with your computer if you were using the Finder and clicking through folders.
 
-3. Turn your `$ACADEMY` folder into a virutalenv by using this command.   
-   * **IMPORTANT:** Do not copy and paste `/path/to/$ACADEMY` directly into your terminal. This should point to the actual location of your `$ACADEMY` folder.
-      * *Example:* If you named your folder `myAcademyProjects` and saved it to your Desktop, you would use `~/Desktop/myAcademyProjects` whenever you refer to the folder. The `~` sign is simply an alias that points to your home directory.
+**Setup**
+1. Navigate (using `ls` and `cd`) to a directory where you want to store your web application. For convenience, we recommend creating a folder (using `mkdir`) on your Desktop.
 
-	```shell
-	$ virtualenv /path/to/$ACADEMY # DO NOT COPY AND PASTE THIS
-	```
-**NOTE:** You have to provide either the relative or the absolute path to `$ACADEMY`.
-
-4. To use your virtualenv, simply go into `$ACADEMY` (using `cd`, short for 'change directory') and activate the virtualenv.
+2. Use the following command to create a virtualenv
 ```shell
-$ cd /path/to/$ACADEMY
-$ source ./bin/activate
+$ python3 -m venv my_venv
 ```
-You should see something like this after activating:
-```shell
-($ACADEMY) $
-```
-This indicates that you're in the `$ACADEMY` virtualenv. Make sure the name of your folder is in parenthesis in front of your command to indicate that the virtualenv is activated.
+This will create a folder called `my_venv` which contains all that you need to run your isolated python environment.
 
-5. We will install our first package in our new virutalenv.
+3. **SUPER IMPORTANT: ACTIVATING YOUR VIRTUALENV** You need to activate your virtualenv **each** time that you want to use it. Navigate to the directory that contains `my_venv`:
 ```shell
-($ACADEMY) $ pip install flask
+$ ls
+my_venv
+$ source my_venv/bin/activate
 ```
-The [flask library](http://flask.pocoo.org/docs/0.12/) contains the majority of the important functionality that we will use this semester.
+You should commit the `source my_venv/bin/activate` command to memory. We'll be using it *every* time we do any coding.
 
-6. To exit out of a virtualenv, simply enter `deactivate` in the terminal.
+	If all goes well, you should see that the name of your virtualenv (in this case `my_venv`) has been prepended to your terminal output. It should look something like below:
+```shell
+(my_venv) $
+```
+
+4. Remember again to check if your virtualenv is activated by seeing if the name is in parentheses at the beginning of your terminal prompt!
+
+5. If you ever need to exit out of a virtualenv, either to go to a different virtualenv or to use your system python version, simply use the `deactivate` command.
+```shell
+(my_venv) $ deactivate
+$
+```
+
+
+### 3. pip
+Libraries are so crucial to the python language that there is a specific software, known as a **package manager** that helps developers install, organize, and maintain their libraries. We call this  tool `pip`. We will start by downloading and installing our most important library, the `flask` web development package.
+
+1. Installing with pip is extremely easy - simply use `pip install <name_of_package>`. Make sure that you are in your virtualenv!
+```shell
+(my_venv) $ pip install flask
+```
+You should see a bunch of text notifying you what `pip` is up to. Notice that in addition to installing `flask`, the program also installs a bunch of other libraries (`click`, `Werkzeug`, etc.). These libraries are called **dependencies** since our target library `flask` needs these other packages in order to run.
+
+2. You can see which programs you have installed by using the `list` subcommand.
+```shell
+$ pip list
+click (6.7)
+Flask (0.12.2)
+itsdangerous (0.24)
+Jinja2 (2.10)
+MarkupSafe (1.0)
+pip (9.0.1)
+setuptools (28.8.0)
+Werkzeug (0.14.1)
+```
 
 
 ### 4. Testing
 If you followed all of the previous steps without error, you should be able to run Flask now!
 1. Make sure that your virtualenv is activated (remember: `$ source bin/activate`)
 
-2. Copy and paste the following code into a file and save it . If you don't know how to do this, download [an editor](#editors), copy the code into a file and save it in the virtualenv. (don't worry if you don't understand what's going on in the code - we'll be going into granular detail in the coming weeks!):
+2. Copy and paste the following code into a file and save it . If you don't know how to do this, download [an editor](#editors), copy the code into a file and save it in the same folder as your virutalenv. (don't worry if you don't understand what's going on in the code - we'll be going into granular detail in the coming weeks!):
 ```python
 from flask import Flask
 app = Flask(__name__)
@@ -118,7 +156,7 @@ if __name__ == "__main__":
 
 3. Save the file as `app.py` in `$ACACDEMY` and run `python app.py`. You should see:
 ```shell
-($ACADEMY) $ python app.py
+(my_venv) $ python app.py
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
  ```
 4. Open a web browser and go to `localhost:5000` and you should see something like this!
@@ -133,34 +171,74 @@ For the majority of the installation, we will be using command prompt (or Git Ba
 **Note:** Whenever you see cmd inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
 
 ### 1. Python for Windows
-If you have Python 3.6.4 already installed, you can skip this step. If you don't know if you do, you can type `python --version` into your terminal window to see your current python version. If you don't have Python 3.6.4 installed, follow these steps.
+If you have Python 2.7.14 already installed, you can skip this step. If you don't know if you do, you can type `python --version` into your terminal window to see your current python version. If you don't have Python 2.7.14 installed, follow these steps.
 
-Install the python package from [here](https://www.python.org/downloads/windows/). We will be using python 3.6.x in this course where x is just the latest version of python.
-_At the time of this writing, [Python 3.6.4](https://www.python.org/downloads/release/python-364/) is the latest._  
-
-Download the executable installer and click on ENABLE PATH VARIABLE. Make sure this is checked!
-
-* Verify a successful installation by opening a command prompt window typing the following commands.
+Install the python package from [here](https://www.python.org/downloads/windows/). We will be using python 2.7.x in this course where x is just the latest version of python.
+_At the time of this writing, [Python 2.7.14](https://www.python.org/downloads/release/python-2714/) is the latest._  
+* Verify a successful installation by opening a command prompt window and navigating to your Python installation directory (default is `C:\Python27`).  Type `python` from this location to launch the Python interpreter.
     ```
     Microsoft Windows [Version 6.2.9200]
     (c) 2012 Microsoft Corporation. All rights reserved.
 
-    C:\Users\Username>python --version
-    Python 3.6.4 
+    C:\Users\Username>cd C:\Python27
+
+    C:\Python27>python
+    Python 2.7.8 (default, Jun 30 2014, 16:03:49) [MSC v.1500 32 bit (Intel)] on win
+    32
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>>
+    ```
+* It would be nice to be able to run Python from any location without having to constantly reference the full installation path name.  This can by done by adding the Python installation path to Windows' `PATH` `ENVIRONMENT VARIABLE`  
+*_In Windows 7, 8 and 10, simply searching for "environment variables" will present the option to `Edit the system environment variables`. This will open the `System Properties / Advanced` tab_*
+*_In Windows XP, right click on `My Computer->Properties` to open `System Properties` and click on the `Advanced` tab._*
+ 1. On the `System Properties / Advanced` tab, click `Environment Variables` to open `User Variables` and `System Variables`
+ 2. Create a new `System Variable` named Variable name: `PYTHON_HOME` and  Variable value: `c:\Python27` (or whatever your installation path was)  
+![](https://camo.githubusercontent.com/767e3e7294af750e7db47ffb119cdc1154e2c79f/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f323939363230352f313035383236332f38643062376334632d313138352d313165332d383532622d3863653063303263623464322e706e67)
+ 3. Find the system variable called `Path` and click `Edit`  
+![](https://camo.githubusercontent.com/da06b60252e8293d278d2027544d23602daa853b/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f323939363230352f313035383239342f30643734343936382d313138362d313165332d383766302d6531326166323330353030612e706e67)
+ 4. Add the following text to the end of the Variable value:  `;%PYTHON_HOME%\;%PYTHON_HOME%\Scripts\`
+![](https://camo.githubusercontent.com/fb28d689631f2f4012741f6cf599dd52ed720b92/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f323939363230352f313035383237362f63333566353334612d313138352d313165332d386631622d6439343033633836643939662e706e67)
+ 5. Verify a successful environment variable update by opening a new command prompt window (important!) and typing `python` from any location
+    ```
+    Microsoft Windows [Version 6.2.9200]
+    (c) 2012 Microsoft Corporation. All rights reserved.
+
+    C:\Users\Username>python
+    Python 2.7.14 (default, Sep 27 2017, 16:03:49) [MSC v.1500 32 bit (Intel)] on win
+    32
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>>
     ```
 
 ### 2. pip for Windows
 pip is the official package manager for python and allows you to install and manage third-party extensions to python. As we use python more and more, this tool becomes invaluable and you should spend some time playing around with it to see how it works.
 
 * Download [get-pip.py](https://bootstrap.pypa.io/get-pip.py) to a folder on your computer. Open a command prompt window and navigate to the folder containing `get-pip.py`. Then run `python get-pip.py`. This will install `pip`.
-* Verify a successful installation by opening a command prompt window and typing the following:
-
+* Verify a successful installation by opening a command prompt window and navigating to your Python installation's script directory (default is `C:\Python27\Scripts`).  Type `pip freeze` from this location to launch the Python interpreter.  
+_`pip freeze` displays the version number of all modules installed in your Python non-standard library;  On a fresh install, `pip freeze` probably won't have much info to show but we're more interested in any errors that might pop up here than the actual content_
     ```
     Microsoft Windows [Version 6.2.9200]
     (c) 2012 Microsoft Corporation. All rights reserved.
 
-    C:\Users\Username>pip --version
-    pip 9.0.1
+    C:\Users\Username>cd c:\Python27\Scripts
+
+    c:\Python27\Scripts>pip freeze
+    antiorm==1.1.1
+    enum34==1.0
+    requests==2.3.0
+    virtualenv==1.11.6
+    ```
+* It would be nice to be able to run Pip from any location without having to constantly reference the full installation path name.  If you followed the Python installation instructions above, then you've already got the pip install location (default = `C:\Python27\Scripts`) in your Windows' `PATH` `ENVIRONMENT VARIABLE`.  If you did not follow those steps, refer to them above now.
+* Verify a successful environment variable update by opening a new command prompt window (important!) and typing `pip freeze` from any location
+    ```
+    Microsoft Windows [Version 6.2.9200]
+    (c) 2012 Microsoft Corporation. All rights reserved.
+
+    C:\Users\Username>pip freeze
+    antiorm==1.1.1
+    enum34==1.0
+    requests==2.3.0
+    virtualenv==1.11.6
 		...
     ```
 
@@ -182,8 +260,8 @@ $ virtualenv \path\to\$ACADEMY
 
 4. To use your virtualenv, simply go into `$ACADEMY` (using `cd`, short for 'change directory') and activate the virtualenv.
 ```shell
-$ cd \path\to\$ACADEMY
-$ .\Scripts\activate
+$ cd /path/to/$ACADEMY
+$ ./Scripts/activate
 ```
 You should see something like this after activating:
 ```shell
