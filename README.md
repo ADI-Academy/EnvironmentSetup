@@ -99,8 +99,8 @@ my_venv
 $ source my_venv/bin/activate
 ```
 You should commit the `source my_venv/bin/activate` command to memory. We'll be using it *every* time we do any coding.
+If all goes well, you should see that the name of your virtualenv (in this case `my_venv`) has been prepended to your terminal output. It should look something like below:
 
-	If all goes well, you should see that the name of your virtualenv (in this case `my_venv`) has been prepended to your terminal output. It should look something like below:
 ```shell
 (my_venv) $
 ```
@@ -110,7 +110,6 @@ You should commit the `source my_venv/bin/activate` command to memory. We'll be 
 5. If you ever need to exit out of a virtualenv, either to go to a different virtualenv or to use your system python version, simply use the `deactivate` command.
 ```shell
 (my_venv) $ deactivate
-$
 ```
 
 
