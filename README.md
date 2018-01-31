@@ -163,64 +163,98 @@ if __name__ == "__main__":
 ![Hello World Flask](images/flask-hello-world.png)
 
 -------
-
+## Windows
 For the majority of the installation, we will be using command prompt (or Git Bash if you choose to). To access command prompt, press the start key and type in 'cmd' into the search bar and press enter.
 
-Note: Whenever you see cmd inputs such as $ echo "Hello World" the $ at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
+**Note:** Whenever you see cmd inputs such as `$ echo "Hello World"` the `$` at the beginning of the line is just a convention to indicate the terminal - please do not add it to your actual command.
 
-1. Python for Windows
-If you have Python 3.6.4 already installed, you can skip this step. If you don't know if you do, you can type python --version into your terminal window to see your current python version. If you don't have Python 3.6.4 installed, follow these steps.
+### 1. Python for Windows
+If you have Python 3.6.4 already installed, you can skip this step. If you don't know if you do, you can type `python --version` into your terminal window to see your current python version. If you don't have Python 3.6.4 installed, follow these steps.
 
-Install the python package from here. We will be using python 3.6.x in this course where x is just the latest version of python. At the time of this writing, Python 3.6.4 is the latest.
+Install the python package from [here](https://www.python.org/downloads/windows/). We will be using python 3.6.x in this course where x is just the latest version of python.
+_At the time of this writing, [Python 3.6.4](https://www.python.org/downloads/release/python-364/) is the latest._  
 
 Download the executable installer and click on ENABLE PATH VARIABLE. Make sure this is checked!
 
-Verify a successful installation by opening a command prompt window typing the following commands.
-Microsoft Windows [Version 6.2.9200]
-(c) 2012 Microsoft Corporation. All rights reserved.
+* Verify a successful installation by opening a command prompt window typing the following commands.
+    ```
+    Microsoft Windows [Version 6.2.9200]
+    (c) 2012 Microsoft Corporation. All rights reserved.
 
-C:\Users\Username>python --version
-Python 3.6.4 
-2. pip for Windows
-pip is the official package manager for python and allows you to install and manage third-party extensions to python. As we use python more and more, this tool becomes invaluable and you should spend some time playing around with it to see how it works.
+    C:\Users\Username>python --version
+    Python 3.6.4 
+    ```
 
-Download get-pip.py to a folder on your computer. Open a command prompt window and navigate to the folder containing get-pip.py. Then run python get-pip.py. This will install pip.
+### 2. pip for Windows
+pip is the official package manager for python and allows you to install and manage third-party extensions to python. As we use python more and more, this tool becomes invaluable and you should spend some time playing around with it to see how it works. Pip is automatically installed with Python3.
 
-Verify a successful installation by opening a command prompt window and typing the following:
+### 3. virtualenv and flask for Windows
+**READ THIS: ITS IMPORTANT**
+Most of professional python coding is done in a **Virtual Environment**, or virtualenv for short, a tool to create an isolated **python environment**. When programmer's refer to the "python environment", they are talking about the collection of software and files that give developers tools to use the language. The software component includes the python binary (what the system calls when you type `python3`) and some other useful tools that we will cover later including `pip` and `wheel`. The second main component is the collection of **libraries** that a developer has downloaded. It is often said that python has a library for everything and it is indeed this feature of python that gives the language so much power and versatility.
 
-Microsoft Windows [Version 6.2.9200]
-(c) 2012 Microsoft Corporation. All rights reserved.
+The main use of the virtualenv is to simulate an **isolated python environment** complete with its own set of binaries (`python`, `pip`, etc.) and a clean set of libraries. This allows you to separate different projects with different requirements and prevent your application from being polluted by differences in library versions, cross-platform differences, etc. Beginners to python often find the process of setting up and using a virtualenv rather tedious but the benefits of good practice with python cannot be overstated.
 
-C:\Users\Username>pip --version
-pip 9.0.1
-	...
-3. virtualenv and flask for Windows
-virtualenv is an extremely useful tool that allows you to isolate your python development environments. Essentially, each virtualenv will contain a new and clean instance of python, pip, and your site packages. This way, if you install or update packages either in the global python scope or in another virtualenv, your changes will not affect this current virtualenv.
+*Advanced (optional):* More specifically, the virtualenv simply contains a copy of the python binaries and a separate, initially empty, folder for the python libraries. When you activate your environment (see below), a script prepends the virtualenv python to your path and changes some system python variables to allow you to use the isolated python libraries.
 
-Make sure that pip in installed and run:
-$ pip install virtualenv
-We are going to create our first virtualenv in this step. You should create a folder somewhere where you will plan to put all of your code for your web apps. We will refer to this folder as $ACADEMY in this section.
+#### Setting up your virtualenv  
+**NOTE:** If you are not familiar with the Command Line, there are just a few commands that you need to be familiar with:
 
-Turn your $ACADEMY folder into a virutalenv by using the command.
+a. `cd`: `cd` stands for "change directory". It allows you to navigate to a different folder (or directory) in your computer.
+```shell
+C:\Users\User> cd Desktop
+C:\Users\User\Desktop>
+```
+b. `dir`: `dir` lists the contents of the current directory. This allows you to see which directories you can navigate to.
+```shell
+C:\Users\User> dir
+Desktop        Downloads      Movies        Pictures
+Documents      Library        Music         Public
+```
+c. `mkdir`: `mkdir` is short for "make directory" and makes a directory with the name you supply.
+```shell
+C:\Users\User> mkdir Academy
+C:\Users\User> ls
+Academy        Documents      Library       Music          Public
+Desktop        Downloads      Music         Pictures
+```
 
-$ python -m venv my_venv
-NOTE: Keep in mind that you have to provide either the relative or the absolute path to $ACADEMY.
+All of these commands are just simpler (and often quicker) ways of interacting with your computer if you were using the Finder and clicking through folders.
 
-To use your virtualenv, simply go into $ACADEMY (using cd, short for 'change directory') and activate the virtualenv.
-$ cd \path\to\$ACADEMY
-$ .\Scripts\activate
-You should see something like this after activating:
+**Setup**
+1. Navigate (using `dir` and `cd`) to a directory where you want to store your web application. For convenience, we recommend creating a folder (using `mkdir`) on your Desktop.
 
-($ACADEMY) $
-This indicates that you're in the $ACADEMY virtualenv.
+2. Use the following command to create a virtualenv
+```shell
+> python -m venv my_venv
+```
+This will create a folder called `my_venv` which contains all that you need to run your isolated python environment.
 
-We will install our first package in our new virutalenv.
-($ACADEMY) $ pip install flask
-The flask library contains the majority of the important functionality that we will use this semester.
+3. **SUPER IMPORTANT: ACTIVATING YOUR VIRTUALENV** You need to activate your virtualenv **each** time that you want to use it. Navigate to the directory that contains `my_venv`:
+```shell
+> dir
+my_venv
+> .\Scripts\activate
+```
+You should commit the `.\Scripts\activate` command to memory. We'll be using it *every* time we do any coding.
+If all goes well, you should see that the name of your virtualenv (in this case `my_venv`) has been prepended to your terminal output. It should look something like below:
 
-To exit out of a virtualenv, simply enter deactivate in the terminal.
-4. Testing for windows
-Follow the same instructions for Mac for this section.
+```shell
+(my_venv) $
+```
+
+4. Remember again to check if your virtualenv is activated by seeing if the name is in parentheses at the beginning of your terminal prompt!
+
+5. If you ever need to exit out of a virtualenv, either to go to a different virtualenv or to use your system python version, simply use the `deactivate` command.
+```shell
+(my_venv) > deactivate
+```
+
+### 4. Installing Flask
+5. We will install our first package in our new virutalenv.
+```shell
+(my_venv) C:\Users\User\Desktop\my_venv> pip install flask
+```
+The [flask library](http://flask.pocoo.org/docs/0.12/) contains the majority of the important functionality that we will use this semester.
 
 ## Editors
 Having a good text editor is essential to programming. However, the choice of editors between programmers can be a source of the most vehement passive-aggressiveness (which is what passes as conflict between coders). That being said, we have included a few options if you don't have a favorite yet.
