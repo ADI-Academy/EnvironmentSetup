@@ -18,7 +18,7 @@ You will need to prepare your system to run python and Flask. If you have previo
 4. [Editors](#editors)
 
 -----
-**IMPORTANT: Please check if you have Anaconda installed on your computer.** If you have taken 1006, you most likely have it installed and should first proceed to the [anaconda section](#conda) before completing this tutorial.
+**IMPORTANT: Please check if you have Anaconda installed on your computer.** If you have taken 1006, you most likely have it installed and should first proceed to the [anaconda section](#anaconda) before completing this tutorial.
 
 
 ## Mac OSX
@@ -264,7 +264,7 @@ If all goes well, you should see that the name of your virtualenv (in this case 
 ```
 The [flask library](http://flask.pocoo.org/docs/0.12/) contains the majority of the important functionality that we will use this semester.
 
-## Conda
+## Anaconda
 Having Anaconda installed on your computer presents a few difficulties. Throughout the tutorials, we will be using the `pip` package manager which interferes with Anaconda's built in package manager, `conda`. You have two options:
 ### 1. Remove Anaconda (Recommended)
 If you are no longer taking 1006 or do not need the Anaconda environment any longer, the easiest solution is just to delete Anaconda entirely. This can be done by using your system uninstaller or by moving the entire Anaconda folder to the trash.
