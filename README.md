@@ -14,9 +14,13 @@ You will need to prepare your system to run python and Flask. If you have previo
 	2. [pip](#2-pip-for-windows)
 	3. [virtualenv and flask](#3-virtualenv-and-flask-for-windows)
 	4. [Testing](#4-testing-for-windows)
-3. [Editors](#editors)
+3. [Anaonda Setup](#anaconda)
+4. [Editors](#editors)
 
 -----
+**IMPORTANT: Please check if you have Anaconda installed on your computer.** If you have taken 1006, you most likely have it installed and should first proceed to the [anaconda section](#conda) before completing this tutorial.
+
+
 ## Mac OSX
 For the majority of the installation, we will be using the Command Line (known as "terminal" on mac) which allows us to access a text-based interface to the computer. You can open the program by simply searching for "terminal" into your spotlight bar.
 
@@ -53,11 +57,13 @@ If you got to this step then your python has been installed correctly!
 
 ### 2. The Virtual Environment
 **READ THIS: ITS IMPORTANT**
-Most of professional python coding is done in a **Virtual Environment**, or virtualenv for short, a tool to create an isolated **python environment**. When programmer's refer to the "python environment", they are talking about the collection of software and files that give developers tools to use the language. The software component includes the python binary (what the system calls when you type `python3`) and some other useful tools that we will cover later including `pip` and `wheel`. The second main component is the collection of **libraries** that a developer has downloaded. It is often said that python has a library for everything and it is indeed this feature of python that gives the language so much power and versatility.
+Proper python development should be done in a **Virtual Environment**, or `virtualenv` for short. `virtualenv` is a tool to create an isolated **python environment**, the collection of software and files that give developers tools to use the language (including `python` and `pip`).
 
-The main use of the virtualenv is to simulate an **isolated python environment** complete with its own set of binaries (`python`, `pip`, etc.) and a clean set of libraries. This allows you to separate different projects with different requirements and prevent your application from being polluted by differences in library versions, cross-platform differences, etc. Beginners to python often find the process of setting up and using a virtualenv rather tedious but the benefits of good practice with python cannot be overstated.
+Why do we need this isolated environment? Suppose you're using Software X, and it depends on version 1.0 of SomeLibrary. Everything's fine until you start working on Project Y, which depends on version 2.0 of SomeLibrary. How can you work with both applications when they depend on conflicting pieces of software? As your project expands, how do you prevent your dependencies from becoming a mess.
 
-*Advanced (optional):* More specifically, the virtualenv simply contains a copy of the python binaries and a separate, initially empty, folder for the python libraries. When you activate your environment (see below), a script prepends the virtualenv python to your path and changes some system python variables to allow you to use the isolated python libraries.
+The main use of an isolated environment is to give you a clean set of python libraries so that your projects do not interfere and pollute each other's requirements. Beginners to python often find the process of setting up and using a `virtualenv` rather tedious but the benefits of isolating your environment cannot be overstated.
+
+*Advanced (optional):* More specifically, the `virtualenv` simply contains a copy of the python binaries and a separate, initially empty, folder for the python libraries. When you activate your virtual environment (see below), a script prepends the `virtualenv` python to your path and changes some system python variables to allow you to use the isolated python libraries.
 
 #### Setting up your virtualenv  
 **NOTE:** If you are not familiar with the Command Line, there are just a few commands that you need to be familiar with:
@@ -93,17 +99,18 @@ $ python3 -m venv my_venv
 This will create a folder called `my_venv` which contains all that you need to run your isolated python environment.
 
 3. **SUPER IMPORTANT: ACTIVATING YOUR VIRTUALENV** You need to activate your virtualenv **each** time that you want to use it. Navigate to the directory that contains `my_venv`:
-```shell
-$ ls
-my_venv
-$ source my_venv/bin/activate
-```
-You should commit the `source my_venv/bin/activate` command to memory. We'll be using it *every* time we do any coding.
+
+	```shell
+	$ ls
+	my_venv
+	$ source my_venv/bin/activate
+	```
+	You should commit the `source my_venv/bin/activate` command to memory. We'll be using it *every* time we do any coding.
 If all goes well, you should see that the name of your virtualenv (in this case `my_venv`) has been prepended to your terminal output. It should look something like below:
 
-```shell
-(my_venv) $
-```
+	```shell
+	(my_venv) $
+	```
 
 4. Remember again to check if your virtualenv is activated by seeing if the name is in parentheses at the beginning of your terminal prompt!
 
@@ -141,17 +148,18 @@ If you followed all of the previous steps without error, you should be able to r
 1. Make sure that your virtualenv is activated (remember: `$ source bin/activate`)
 
 2. Copy and paste the following code into a file and save it . If you don't know how to do this, download [an editor](#editors), copy the code into a file and save it in the same folder as your virutalenv. (don't worry if you don't understand what's going on in the code - we'll be going into granular detail in the coming weeks!):
-```python
-from flask import Flask
-app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return "Hello World!"
+	```python
+	from flask import Flask
+	app = Flask(__name__)
 
-if __name__ == "__main__":
-	app.run()
-```
+	@app.route('/')
+	def index():
+	    return "Hello World!"
+
+	if __name__ == "__main__":
+		app.run()
+	```
 
 3. Save the file as `app.py` in `$ACACDEMY` and run `python app.py`. You should see:
 ```shell
@@ -182,7 +190,7 @@ Download the executable installer and click on ENABLE PATH VARIABLE. Make sure t
     (c) 2012 Microsoft Corporation. All rights reserved.
 
     C:\Users\Username>python --version
-    Python 3.6.4 
+    Python 3.6.4
     ```
 
 ### 2. pip for Windows
@@ -256,6 +264,79 @@ If all goes well, you should see that the name of your virtualenv (in this case 
 ```
 The [flask library](http://flask.pocoo.org/docs/0.12/) contains the majority of the important functionality that we will use this semester.
 
+## Conda
+Having Anaconda installed on your computer presents a few difficulties. Throughout the tutorials, we will be using the `pip` package manager which interferes with Anaconda's built in package manager, `conda`. You have two options:
+### 1. Remove Anaconda (Recommended)
+If you are no longer taking 1006 or do not need the Anaconda environment any longer, the easiest solution is just to delete Anaconda entirely. This can be done by using your system uninstaller or by moving the entire Anaconda folder to the trash.
+#### Conda Uninstall - Mac OSX
+If you are familiar with using the terminal, just input the following command and you should be able to remove Anaconda:
+
+`rm -rf ~/anaconda`
+
+In addition, Mac users need to remove Anaconda's path variable from their `.bash_profile`. If you do not know what this means, simply type the following into your terminal:
+
+`rm ~/.bash_profile && touch ~/.bash_profile`
+
+Otherwise, remove the line that adds the Anaconda python path from your `.bash_profile`. It should look something like:
+
+`export PATH=/usr/bin/anaconda`
+
+Just delete this line and restart your terminal! To make sure that you successfully reached this step, you should see the following after running `python`:
+
+```shell
+$ python
+Python 2.7.10 (default, Jul 15 2017, 17:16:57)
+[GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+Note that we are now using the system default python distribution. Press `ctrl-c` to exit out of this environment! You're now set to proceed with the [rest of the Mac installation](#mac-osx)
+
+#### Conda Uninstall - Windows
+On windows, simply delete the Anaconda folder from your computer or use the system uninstaller to remove Anaconda. Contact a TA if you are not sure how to do this. Once you are done, make sure that you successfully uninstalled Anaconda by running the `python` command. You should see an error! No worries, proceed with the [rest of the Windows python installation](#windows).
+
+### 2. Keep Anaconda
+If you need to use the scientific resources provided by Anaconda in the future, and want to keep the software on your computer, you can still use flask! Follow the installation steps below.
+
+1. Python should be already be installed on your computer from the Anaconda environment. If you type the `python3` command in your command line (terminal for mac or command prompt for windows), you should see something like the following:
+
+	```shell
+	$ python3
+	Python 3.6.3 |Anaconda, Inc.| (default, Oct 6 2017, 12:04:38)
+	[GCC 4.2.1 Compatible Clang 4.0.1 (tags/RELEASE_401/final)] on darwin
+	Type "help", "copyright", "credits" or "license" for more information.
+	>>>
+	```
+	Note that the distributor for your python is `Anaconda, Inc.` instead of the default mac distribution. Enter `ctrl-c` to exit out of your python shell.
+
+2. Create your virtual environment. **IMPORTANT:** Please read the explanation of why we use virtual environments [here](#3-virtualenv-and-flask).
+
+	```shell
+	$ conda create -n my_venv
+	```
+
+Follow the on-screen prompts.
+
+3. Every time that you want to code in flask, you must first activate your virtual environment. Commit the next line of instruction to memory - you'll be seeing it over and over again!
+
+	```shell
+	$ source activate my_venv
+	```
+
+	When you want to leave your conda virtual environment, you need to use the following command:
+ 	```shell
+	$ source deactivate
+	```
+
+4. Once you are in your virtual environment, you should see that the front of your terminal prompt shows the name of the environment in parentheses (e.g. `(my_venv) MY_NAME $`). Make sure you look for this whenever you want to be in a virtual environment. We now install the flask packages. Type the following command to install flask into your virtual environment.
+
+	```shell
+	conda install flask
+	```
+
+Follow the on screen prompts and proceed to [testing](#testing) to make sure that you have a proper installation!
+
+
 ## Editors
 Having a good text editor is essential to programming. However, the choice of editors between programmers can be a source of the most vehement passive-aggressiveness (which is what passes as conflict between coders). That being said, we have included a few options if you don't have a favorite yet.
 ##### [Sublime Text](https://www.sublimetext.com/)
@@ -273,5 +354,3 @@ An up and coming editor made by Microsoft and the people behind the madly popula
 **Used by:** Jonathan
 
 This is hands-down the best editor for most things in python and especially flask. There is an overwhelming suite of different functionality that make your life as programmer worth living. As a student, you can even get the premium (read: expensive) version for free. However, this editor is not recommended for beginners as it is has a rather steep learning curve and will consume significantly more memory and resources on your computer than the others on this chart.
-
-**NOTE:** While this may generate some consternation, *DO NOT USE VIM OR EMACS* or any other console based editor that some pseudo-programmer somewhere has told you will make you look 1337 or some other bullshit. You will regret every keystroke and your teammates will laugh at you. :(
