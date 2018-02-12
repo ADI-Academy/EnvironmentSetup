@@ -6,8 +6,8 @@ You will need to prepare your system to run python and Flask. If you have previo
 
 1. [Mac OS Installation](#mac-osx)
 	1. [Package Manager](#1-package-manager)
-	2. [pip](#2-pip)
-	3. [virtualenv and flask](#3-virtualenv-and-flask)
+	2. [Virtual Environments](#2-the-virtual-environment)
+	3. [Python Package Manager](#3-pip)
 	4. [Testing](#4-testing)
 2. [Windows Installation](#windows)
 	1. [Python](#1-python-for-windows)
@@ -264,6 +264,10 @@ If all goes well, you should see that the name of your virtualenv (in this case 
 ```
 The [flask library](http://flask.pocoo.org/docs/0.12/) contains the majority of the important functionality that we will use this semester.
 
+### 5. Testing for Windows
+Refer to the [Mac testing](#4-testing) instructions to verify your flask installation for windows.
+
+---
 ## Anaconda
 Having Anaconda installed on your computer presents a few difficulties. Throughout the tutorials, we will be using the `pip` package manager which interferes with Anaconda's built in package manager, `conda`. You have two options:
 ### 1. Remove Anaconda (Recommended)
@@ -305,11 +309,11 @@ If you need to use the scientific resources provided by Anaconda in the future, 
 	Python 3.6.3 |Anaconda, Inc.| (default, Oct 6 2017, 12:04:38)
 	[GCC 4.2.1 Compatible Clang 4.0.1 (tags/RELEASE_401/final)] on darwin
 	Type "help", "copyright", "credits" or "license" for more information.
-	>>>
 	```
+	
 	Note that the distributor for your python is `Anaconda, Inc.` instead of the default mac distribution. Enter `ctrl-c` to exit out of your python shell.
 
-2. Create your virtual environment. **IMPORTANT:** Please read the explanation of why we use virtual environments [here](#3-virtualenv-and-flask).
+2. Create your virtual environment. **IMPORTANT:** Please read the explanation of why we use virtual environments [here](#2-the-virtual-environment).
 
 	```shell
 	$ conda create -n my_venv
@@ -324,6 +328,7 @@ Follow the on-screen prompts.
 	```
 
 	When you want to leave your conda virtual environment, you need to use the following command:
+ 	
  	```shell
 	$ source deactivate
 	```
@@ -334,7 +339,7 @@ Follow the on-screen prompts.
 	conda install flask
 	```
 
-Follow the on screen prompts and proceed to [testing](#testing) to make sure that you have a proper installation!
+Follow the on screen prompts and proceed to [testing](#4-testing).
 
 
 ## Editors
